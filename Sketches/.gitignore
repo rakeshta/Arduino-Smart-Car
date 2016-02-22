@@ -1,0 +1,6 @@
+
+# Eclipse Arduino stuff
+Release/**
+arduino/**
+spec.d
+.settings
