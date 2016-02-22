@@ -1,0 +1,6 @@
+[submodule "iOS/Vendor/BLESerial"]
+	path = iOS/Vendor/BLESerial
+	url = https://github.com/rakeshta/BLESerial.git
+[submodule "iOS/Vendor/CocoaLumberjack"]
+	path = iOS/Vendor/CocoaLumberjack
+	url = https://github.com/CocoaLumberjack/CocoaLumberjack.git
