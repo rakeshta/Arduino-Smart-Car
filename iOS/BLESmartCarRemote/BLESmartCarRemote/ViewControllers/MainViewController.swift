@@ -14,7 +14,6 @@ class MainViewController: UIViewController {
 
     // MARK: - IB Outlets
     
-    @IBOutlet var deviceNameLabel: UILabel!
 }
 
 
@@ -72,10 +71,10 @@ extension MainViewController: RemoteControllerDelegate {
         
         // Refresh UI
         if  let peripheral = RemoteController.sharedController.connectedPeripheral {
-            deviceNameLabel.text = peripheral.name
+            title = peripheral.name
         }
         else {
-            deviceNameLabel.text = "Not Connected"
+            title = "Not Connected"
         }
     }
 }
