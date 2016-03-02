@@ -8,12 +8,19 @@
 
 import UIKit
 import BLESerial
+import CAJoystick
 
 
 class MainViewController: UIViewController {
 
     // MARK: - IB Outlets
+
+    @IBOutlet private weak var joystickControl:        CAJoystickControl!
     
+    @IBOutlet private weak var speedSetLeftLabel:      UILabel!
+    @IBOutlet private weak var speedSetRightLabel:     UILabel!
+    @IBOutlet private weak var speedActualLeftLabel:   UILabel!
+    @IBOutlet private weak var speedActualRightLabel:  UILabel!
 }
 
 
@@ -23,6 +30,12 @@ extension MainViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Initialize UI
+        speedSetLeftLabel.text     = "0"
+        speedSetRightLabel.text    = "0"
+        speedActualLeftLabel.text  = "-"
+        speedActualRightLabel.text = "-"
         
         // TODO: Convert to MVP
         RemoteController.sharedController.delegate = self
@@ -53,13 +66,14 @@ extension MainViewController {
 
 extension MainViewController {
     
-}
-
-
-// MARK: - Text Field Delegate
-
-extension MainViewController: UITextFieldDelegate {
-
+    @IBAction private func joystickControl_valueChanged(sender: CAJoystickControl) {
+        let m  = sender.value.magnitude
+        let sl = Int16(m * 255)
+        let sr = Int16(m * 255)
+        
+        speedSetLeftLabel.text  = "\(sl)"
+        speedSetRightLabel.text = "\(sr)"
+    }
 }
 
 
