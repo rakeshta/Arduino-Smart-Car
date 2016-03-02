@@ -17,8 +17,32 @@
                     <view key="view" contentMode="scaleToFill" id="kA5-hF-4I9">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9gA-Ak-qHm" customClass="CAJoystickControl" customModule="CAJoystick">
+                                <rect key="frame" x="380" y="380" width="200" height="200"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="eOm-0d-4HJ"/>
+                                    <constraint firstAttribute="height" constant="200" id="otA-Mb-dhO"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="js_background"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="thumbImage" value="js_thumb"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="thumbColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="thumbSize">
+                                        <real key="value" value="0.59999999999999998"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="AL9-9J-tzp" firstAttribute="top" secondItem="9gA-Ak-qHm" secondAttribute="bottom" constant="20" id="6rI-Ct-feu"/>
+                            <constraint firstItem="9gA-Ak-qHm" firstAttribute="trailing" secondItem="kA5-hF-4I9" secondAttribute="trailingMargin" id="cTW-eE-Kdj"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Smart Car Remote" id="IAI-UX-Tz3"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
@@ -177,4 +201,8 @@
             <point key="canvasLocation" x="2160" y="400"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="js_background" width="200" height="200"/>
+        <image name="js_thumb" width="120" height="120"/>
+    </resources>
 </document>

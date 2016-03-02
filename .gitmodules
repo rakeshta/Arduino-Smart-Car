@@ -4,3 +4,6 @@
 [submodule "iOS/Vendor/CocoaLumberjack"]
 	path = iOS/Vendor/CocoaLumberjack
 	url = https://github.com/CocoaLumberjack/CocoaLumberjack.git
+[submodule "iOS/Vendor/CAJoystick"]
+	path = iOS/Vendor/CAJoystick
+	url = https://github.com/rakeshta/CAJoystick.git
