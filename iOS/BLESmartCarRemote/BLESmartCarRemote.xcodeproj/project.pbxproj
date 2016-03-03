@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		143242E91C86967E007E31C3 /* CAJoystick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 143242D81C869612007E31C3 /* CAJoystick.framework */; };
+		143242EA1C86967E007E31C3 /* CAJoystick.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 143242D81C869612007E31C3 /* CAJoystick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		143AF98E1C7BC7CF0043FD28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143AF98D1C7BC7CF0043FD28 /* AppDelegate.swift */; };
 		143AF9931C7BC7CF0043FD28 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 143AF9911C7BC7CF0043FD28 /* Main.storyboard */; };
 		143AF9951C7BC7CF0043FD28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 143AF9941C7BC7CF0043FD28 /* Assets.xcassets */; };
@@ -24,6 +26,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		143242D71C869612007E31C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 143242D21C869612007E31C3 /* CAJoystick.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 143242BA1C7E8E0D007E31C3;
+			remoteInfo = CAJoystick;
+		};
+		143242D91C869612007E31C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 143242D21C869612007E31C3 /* CAJoystick.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 143242A11C7E8DB7007E31C3;
+			remoteInfo = CAJoystickExample;
+		};
+		143242EB1C86967E007E31C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 143242D21C869612007E31C3 /* CAJoystick.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 143242B91C7E8E0D007E31C3;
+			remoteInfo = CAJoystick;
+		};
 		143AF9A91C7BC8710043FD28 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 143AF9A41C7BC8710043FD28 /* BLESerial.xcodeproj */;
@@ -173,6 +196,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				143242EA1C86967E007E31C3 /* CAJoystick.framework in Embed Frameworks */,
 				143AF9E41C7BC8C70043FD28 /* CocoaLumberjackSwift.framework in Embed Frameworks */,
 				143AFA1A1C7BCD160043FD28 /* CocoaLumberjack.framework in Embed Frameworks */,
 				143AF9DF1C7BC89D0043FD28 /* BLESerial.framework in Embed Frameworks */,
@@ -183,6 +207,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		143242D21C869612007E31C3 /* CAJoystick.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CAJoystick.xcodeproj; path = ../Vendor/CAJoystick/CAJoystick.xcodeproj; sourceTree = "<group>"; };
 		143AF98A1C7BC7CF0043FD28 /* BLESmartCarRemote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BLESmartCarRemote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		143AF98D1C7BC7CF0043FD28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		143AF9921C7BC7CF0043FD28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -203,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				143AF9E81C7BC8D70043FD28 /* CoreBluetooth.framework in Frameworks */,
+				143242E91C86967E007E31C3 /* CAJoystick.framework in Frameworks */,
 				143AF9E31C7BC8C70043FD28 /* CocoaLumberjackSwift.framework in Frameworks */,
 				143AFA191C7BCD160043FD28 /* CocoaLumberjack.framework in Frameworks */,
 				143AF9DE1C7BC89D0043FD28 /* BLESerial.framework in Frameworks */,
@@ -212,6 +238,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		143242D31C869612007E31C3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				143242D81C869612007E31C3 /* CAJoystick.framework */,
+				143242DA1C869612007E31C3 /* CAJoystickExample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		143AF9811C7BC7CF0043FD28 = {
 			isa = PBXGroup;
 			children = (
@@ -265,6 +300,7 @@
 			children = (
 				143AF9AB1C7BC8790043FD28 /* Lumberjack.xcodeproj */,
 				143AF9A41C7BC8710043FD28 /* BLESerial.xcodeproj */,
+				143242D21C869612007E31C3 /* CAJoystick.xcodeproj */,
 			);
 			name = Vendor;
 			sourceTree = "<group>";
@@ -343,6 +379,7 @@
 				143AF9E11C7BC89E0043FD28 /* PBXTargetDependency */,
 				143AF9E61C7BC8C70043FD28 /* PBXTargetDependency */,
 				143AFA1C1C7BCD160043FD28 /* PBXTargetDependency */,
+				143242EC1C86967E007E31C3 /* PBXTargetDependency */,
 			);
 			name = BLESmartCarRemote;
 			productName = BLESmartCarRemote;
@@ -381,6 +418,10 @@
 					ProjectRef = 143AF9A41C7BC8710043FD28 /* BLESerial.xcodeproj */;
 				},
 				{
+					ProductGroup = 143242D31C869612007E31C3 /* Products */;
+					ProjectRef = 143242D21C869612007E31C3 /* CAJoystick.xcodeproj */;
+				},
+				{
 					ProductGroup = 143AF9AC1C7BC8790043FD28 /* Products */;
 					ProjectRef = 143AF9AB1C7BC8790043FD28 /* Lumberjack.xcodeproj */;
 				},
@@ -393,6 +434,20 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		143242D81C869612007E31C3 /* CAJoystick.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CAJoystick.framework;
+			remoteRef = 143242D71C869612007E31C3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		143242DA1C869612007E31C3 /* CAJoystickExample.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = CAJoystickExample.app;
+			remoteRef = 143242D91C869612007E31C3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		143AF9AA1C7BC8710043FD28 /* BLESerial.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -542,6 +597,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		143242EC1C86967E007E31C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CAJoystick;
+			targetProxy = 143242EB1C86967E007E31C3 /* PBXContainerItemProxy */;
+		};
 		143AF9E11C7BC89E0043FD28 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = BLESerial;
