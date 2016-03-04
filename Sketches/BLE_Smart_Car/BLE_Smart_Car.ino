@@ -7,6 +7,7 @@
 
 #include "HBridgeMotorController.h"
 #include "RotaryEncoderController.h"
+#include "Packet.h"
 
 // H-bridge motor controller pins
 #define PIN_MOTOR_PWMA 11

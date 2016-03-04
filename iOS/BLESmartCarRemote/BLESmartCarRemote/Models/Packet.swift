@@ -9,6 +9,13 @@
 import Foundation
 
 
+// MARK: - PayloadType
+
+extension PayloadType {
+    static let SetSpeed     = PayloadTypeSetSpeed
+}
+
+
 // MARK: - PacketError
 
 internal enum PacketError: String, ErrorType {
@@ -19,7 +26,7 @@ internal enum PacketError: String, ErrorType {
 }
 
 
-// MARK: - Constants
+// MARK: - Packet
 
 extension Packet {
     
