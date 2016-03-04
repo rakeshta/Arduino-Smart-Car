@@ -5,6 +5,7 @@
 //  Bluetooth controlled smart car
 //
 
+#include <SoftwareSerial.h>
 #include "HBridgeMotorController.h"
 #include "RotaryEncoderController.h"
 #include "Packet.h"
@@ -22,6 +23,10 @@
 #define PIN_SPEED_ENCODER_A 2
 #define PIN_SPEED_ENCODER_B 3
 
+// Bluetooth pins
+#define PIN_BLE_TX  A0
+#define PIN_BLE_RX  A1
+
 
 // Motor controller
 HBridgeMotorController motorController(
@@ -29,12 +34,27 @@ HBridgeMotorController motorController(
     PIN_MOTOR_PWMB, PIN_MOTOR_IN1B, PIN_MOTOR_IN2B,
     PIN_MOTOR_STBY);
 
+
+// Bluetoth serial
+SoftwareSerial bleSerial(PIN_BLE_RX, PIN_BLE_TX); // RX, TX
+
+// Setup
 void setup() {
 
 	// Start rotary encoder
 	RotaryEncoderController::begin(PIN_SPEED_ENCODER_A, PIN_SPEED_ENCODER_B);
+ 
+  // Open serial communications and wait for port to open:
+  Serial.begin(9600);
+  while (!Serial);
+
+  Serial.println("BLE Smart Car");
+
+  // Initialize serial com to bluetoth
+  bleSerial.begin(9600);
 }
 
+// Loop
 void loop() {
 
 	// Loop rotary encoder
@@ -42,6 +62,14 @@ void loop() {
 
 	// Test motor controller
 	testMotorControllerLoop();
+
+  // Test serial receive
+  if (bleSerial.available()) {
+    Serial.write(bleSerial.read());
+  }
+  if (Serial.available()) {
+    bleSerial.write(Serial.read());
+  }
 }
 
 
