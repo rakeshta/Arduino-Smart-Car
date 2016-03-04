@@ -20,7 +20,7 @@ typedef struct {
 
 
 typedef union {
-    UInt8         bytes[58];
+    UInt8         bytes[10];
     SpeedPayload  speed;
 } Payload;
 
