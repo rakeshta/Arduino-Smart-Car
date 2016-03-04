@@ -24,7 +24,8 @@
 		143AFA191C7BCD160043FD28 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 143AF9C31C7BC8790043FD28 /* CocoaLumberjack.framework */; };
 		143AFA1A1C7BCD160043FD28 /* CocoaLumberjack.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 143AF9C31C7BC8790043FD28 /* CocoaLumberjack.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1457BDFA1C88F8EF0056A90B /* Packet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1457BDF91C88F8EF0056A90B /* Packet.swift */; };
-		1457BE0B1C88FA700056A90B /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1457BE0A1C88FA700056A90B /* Message.swift */; };
+		149786861C894D4900777822 /* Packet.m in Sources */ = {isa = PBXBuildFile; fileRef = 149786851C894D4900777822 /* Packet.m */; };
+		149786971C89563500777822 /* SmartCar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149786961C89563500777822 /* SmartCar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -223,10 +224,11 @@
 		143AF9F11C7BCB3D0043FD28 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		143AF9F21C7BCB3D0043FD28 /* ScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		1457BDF91C88F8EF0056A90B /* Packet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Packet.swift; sourceTree = "<group>"; };
-		1457BE0A1C88FA700056A90B /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		1457BE0D1C8910420056A90B /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Playground.playground; sourceTree = "<group>"; };
-		1457BE0F1C8912140056A90B /* Packet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Packet.h; sourceTree = "<group>"; };
 		1457BE121C8914570056A90B /* BLESmartCarRemote-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BLESmartCarRemote-Bridging-Header.h"; sourceTree = "<group>"; };
+		149786841C894D4900777822 /* Packet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Packet.h; sourceTree = "<group>"; };
+		149786851C894D4900777822 /* Packet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Packet.m; sourceTree = "<group>"; };
+		149786961C89563500777822 /* SmartCar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartCar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -356,10 +358,11 @@
 		143AF9ED1C7BCAE70043FD28 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				143AF9EF1C7BCB320043FD28 /* RemoteController.swift */,
-				1457BE0F1C8912140056A90B /* Packet.h */,
+				149786841C894D4900777822 /* Packet.h */,
+				149786851C894D4900777822 /* Packet.m */,
 				1457BDF91C88F8EF0056A90B /* Packet.swift */,
-				1457BE0A1C88FA700056A90B /* Message.swift */,
+				149786961C89563500777822 /* SmartCar.swift */,
+				143AF9EF1C7BCB320043FD28 /* RemoteController.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -610,8 +613,9 @@
 				143AF9F31C7BCB3D0043FD28 /* MainViewController.swift in Sources */,
 				143AF98E1C7BC7CF0043FD28 /* AppDelegate.swift in Sources */,
 				1457BDFA1C88F8EF0056A90B /* Packet.swift in Sources */,
-				1457BE0B1C88FA700056A90B /* Message.swift in Sources */,
+				149786861C894D4900777822 /* Packet.m in Sources */,
 				143AF9F01C7BCB320043FD28 /* RemoteController.swift in Sources */,
+				149786971C89563500777822 /* SmartCar.swift in Sources */,
 				143AF9F41C7BCB3D0043FD28 /* ScanViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

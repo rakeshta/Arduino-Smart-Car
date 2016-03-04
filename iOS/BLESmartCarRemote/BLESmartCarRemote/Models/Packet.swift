@@ -12,10 +12,10 @@ import Foundation
 // MARK: - PacketError
 
 internal enum PacketError: String, ErrorType {
-    case InvalidSize    = "Invalid size"
-    case InvalidHeader  = "Invalid header"
-    case InvalidFooter  = "Invalid footer"
-    case InvalidVersion = "Invalid version"
+    case InvalidSize        = "Invalid size"
+    case InvalidStartMarker = "Invalid start marker"
+    case InvalidEndMarker   = "Invalid end marker"
+    case InvalidVersion     = "Invalid version"
 }
 
 
@@ -23,13 +23,29 @@ internal enum PacketError: String, ErrorType {
 
 extension Packet {
     
-    static let PaddingTop0    = 0x01 as UInt8
-    static let PaddingTop1    = 0x02 as UInt8
+    static let StartMarker0 = 0x01 as UInt8
+    static let StartMarker1 = 0x02 as UInt8
 
-    static let PaddingBottom0 = 0x0D as UInt8
-    static let PaddingBottom1 = 0x0A as UInt8
+    static let EndMarker0   = 0x0D as UInt8
+    static let EndMarker1   = 0x0A as UInt8
+
+    static let Version      = 0x01 as UInt8
+}
+
+
+// MARK: - Creation
+
+extension Packet {
     
-    static let Version        = 0x01 as UInt8
+    init(type: PayloadType, @noescape configure: inout Payload -> Void) {
+        self.start   = (Packet.StartMarker0, Packet.StartMarker1)
+        self.version = Packet.Version
+        self.type    = type
+        self.payload = Payload()
+        self.end     = (Packet.EndMarker0,   Packet.EndMarker1)
+
+        configure(&payload)
+    }
 }
 
 
@@ -37,12 +53,12 @@ extension Packet {
 
 extension Packet {
     
-    var toData: NSData {
+    var serialize: NSData {
         var copy = self
         return NSData(bytes: &copy, length: sizeof(Packet))
     }
     
-    static func fromData(data: NSData) throws -> Packet {
+    static func deserialize(data: NSData) throws -> Packet {
         
         // Ensure data is of right length
         if  data.length != sizeof(Packet) {
@@ -53,16 +69,16 @@ extension Packet {
         do {
             let bytes = UnsafePointer<UInt8>(data.bytes)
             
-            if  bytes[0] != PaddingTop0 || bytes[1] != PaddingTop1 {
-                throw PacketError.InvalidHeader
+            if  bytes[0] != StartMarker0 || bytes[1] != StartMarker1 {
+                throw PacketError.InvalidStartMarker
             }
             
             if  bytes[2] != Version {
                 throw PacketError.InvalidVersion
             }
             
-            if  bytes[data.length - 2] != PaddingBottom0 || bytes[data.length - 1] != PaddingBottom1 {
-                throw PacketError.InvalidFooter
+            if  bytes[data.length - 2] != EndMarker0 || bytes[data.length - 1] != EndMarker1 {
+                throw PacketError.InvalidEndMarker
             }
         }
         
@@ -73,3 +89,4 @@ extension Packet {
         return pointer.move()
     }
 }
+

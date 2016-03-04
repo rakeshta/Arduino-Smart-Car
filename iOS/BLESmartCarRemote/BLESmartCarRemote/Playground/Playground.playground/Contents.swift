@@ -3,22 +3,10 @@
 import UIKit
 
 
-struct MyTest {
-    var v0: Int8
-    var v1: Int8
-    var v2: Int8
-    var v3: Int8
-    var v4: Int8
-    var v5: Int8
-    var v6: Int8
-    var v7: Int8
-    var msg: Message
-}
+let a0 = 0x03 as UInt8
+let a1 = 0xCF as UInt8
+let ax = Int16(a0) << 0x08 | Int16(a1)
+sizeof(a0.dynamicType)
 
-struct Message {
-    var a: Int64
-    var b: Int64
-}
-
-sizeof(Message)
-sizeof(MyTest)
+let s = Int16(-400)
+let u = s & (Int16(0xFF) << 0x08)

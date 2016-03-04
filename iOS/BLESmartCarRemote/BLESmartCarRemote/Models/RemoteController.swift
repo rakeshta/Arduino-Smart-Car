@@ -12,19 +12,19 @@ import BLESerial
 
 // MARK: - RemoteControllerDelegate
 
-protocol RemoteControllerDelegate: AnyObject {
-    func remoteController(remoteController: RemoteController, didSetConnectedPeripheral peripheral: BLESerialPeripheral?)
+protocol RemoteControllerDelegate1: AnyObject {
+    func remoteController(remoteController: RemoteController1, didSetConnectedPeripheral peripheral: BLESerialPeripheral?)
 }
 
 
 // MARK: - RemoteController
 
-internal final class RemoteController: NSObject {
+internal class RemoteController1: NSObject {
     
     
     // MARK: - Singleton
     
-    static let sharedController      = RemoteController()
+    static let sharedController      = RemoteController1()
     
     
     // MARK: - Members
@@ -40,5 +40,12 @@ internal final class RemoteController: NSObject {
     
     // MARK: -
     
-    weak var delegate:                 RemoteControllerDelegate?
+    weak var delegate:                 RemoteControllerDelegate1?
+}
+
+
+// MARK: - Control Messages
+
+extension RemoteController1 {
+    
 }

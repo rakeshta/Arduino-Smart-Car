@@ -2,17 +2,33 @@
 //  Packet.h
 //  BLESmartCarRemote
 //
-//  Created by Rakesh TA on 3/3/16.
+//  Created by Rakesh TA on 3/03/2016.
 //  Copyright © 2016 Raptor Soft. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
 
+typedef NS_ENUM(UInt8, PayloadType) {
+    PayloadTypeSetSpeed = 0x01,
+};
+
 typedef struct {
-    UInt8 start[2];
-    UInt8 version;
-    UInt8 padding;
-    UInt8 payload[58];
-    UInt8 end[2];
+    SInt16 left;
+    SInt16 right;
+} SpeedPayload;
+
+
+typedef union {
+    UInt8         bytes[58];
+    SpeedPayload  speed;
+} Payload;
+
+
+typedef struct {
+    UInt8        start[2];
+    UInt8        version;
+    PayloadType  type;
+    Payload      payload;
+    UInt8        end[2];
 } Packet;

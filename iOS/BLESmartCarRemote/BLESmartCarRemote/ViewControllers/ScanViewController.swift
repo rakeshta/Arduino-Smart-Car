@@ -12,7 +12,7 @@ import BLESerial
 
 // MARK: - ScanViewCell
 
-internal final class ScanViewCell: UITableViewCell {
+internal class ScanViewCell: UITableViewCell {
     
     // MARK: - Constants
     
@@ -36,9 +36,16 @@ internal final class ScanViewCell: UITableViewCell {
 }
 
 
+// MARK: - ScanViewControllerDelegate
+
+protocol ScanViewControllerDelegate: AnyObject {
+    func scanViewController(viewController: ScanViewController, didConnectToPeripheral peripheral: BLESerialPeripheral)
+}
+
+
 // MARK: - ScanViewController
 
-internal final class ScanViewController: UIViewController {
+internal class ScanViewController: UIViewController {
     
     // MARK: - IB Outlets
     
@@ -50,6 +57,11 @@ internal final class ScanViewController: UIViewController {
     // MARK: - Members
     
     private var peripherals             = [BLESerialPeripheral]()
+    
+    
+    // MARK: -
+    
+    weak var delegate:                     ScanViewControllerDelegate?
 }
 
 
@@ -68,16 +80,16 @@ extension ScanViewController {
         updateScanningLabel()
         
         // Start scanning
-        RemoteController.sharedController.serialManager.scanDelegate = self
-        RemoteController.sharedController.serialManager.startScan()
+        SmartCar.serialManager.scanDelegate = self
+        SmartCar.serialManager.startScan()
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         
         // Stop scanning
-        RemoteController.sharedController.serialManager.stopScan()
-        RemoteController.sharedController.serialManager.scanDelegate = nil
+        SmartCar.serialManager.stopScan()
+        SmartCar.serialManager.scanDelegate = nil
     }
 }
 
@@ -115,7 +127,7 @@ extension ScanViewController {
             
             // Save connected peripheral & dismiss self on success
             if  success {
-                RemoteController.sharedController.connectedPeripheral = peripheral
+                self.delegate?.scanViewController(self, didConnectToPeripheral: peripheral)
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
         }

@@ -21,6 +21,15 @@ class MainViewController: UIViewController {
     @IBOutlet private weak var speedSetRightLabel:     UILabel!
     @IBOutlet private weak var speedActualLeftLabel:   UILabel!
     @IBOutlet private weak var speedActualRightLabel:  UILabel!
+    
+    
+    // MARK: - Members
+    
+    private var smartCar: SmartCar? {
+        didSet {
+            title = smartCar?.serialPeripheral.name ?? "Not Connected"
+        }
+    }
 }
 
 
@@ -36,16 +45,13 @@ extension MainViewController {
         speedSetRightLabel.text    = "0"
         speedActualLeftLabel.text  = "-"
         speedActualRightLabel.text = "-"
-        
-        // TODO: Convert to MVP
-        RemoteController.sharedController.delegate = self
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 
         // Start scanning if no connected peripheral
-        if  RemoteController.sharedController.connectedPeripheral == nil {
+        if  smartCar == nil {
             performSegueWithIdentifier("ShowScanViewController", sender: nil)
         }
     }
@@ -62,6 +68,20 @@ extension MainViewController {
 }
 
 
+// MARK: - Segue
+
+extension MainViewController {
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+
+        // Attach self as delegate to scan manager
+        if  let viewController = segue.destinationViewController as? ScanViewController {
+            viewController.delegate = self
+        }
+    }
+}
+
+
 // MARK: - Actions
 
 extension MainViewController {
@@ -71,24 +91,21 @@ extension MainViewController {
         let sl = Int16(m * 255)
         let sr = Int16(m * 255)
         
+        // Send command to device
+        smartCar?.setSpeed(left: sl, right: sr)
+        
+        // Show set speed in UI
         speedSetLeftLabel.text  = "\(sl)"
         speedSetRightLabel.text = "\(sr)"
     }
 }
 
 
-// MARK: - TODO: Convert to MVP
+// MARK: - Scan View Controller Delegate
 
-extension MainViewController: RemoteControllerDelegate {
+extension MainViewController: ScanViewControllerDelegate {
     
-    func remoteController(remoteController: RemoteController, didSetConnectedPeripheral peripheral: BLESerialPeripheral?) {
-        
-        // Refresh UI
-        if  let peripheral = RemoteController.sharedController.connectedPeripheral {
-            title = peripheral.name
-        }
-        else {
-            title = "Not Connected"
-        }
+    func scanViewController(viewController: ScanViewController, didConnectToPeripheral peripheral: BLESerialPeripheral) {
+        smartCar = SmartCar(serialPeripheral: peripheral)
     }
 }
