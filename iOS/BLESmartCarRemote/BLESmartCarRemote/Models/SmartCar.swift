@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CocoaLumberjackSwift
 import BLESerial
 
 
@@ -43,24 +44,33 @@ extension SmartCar {
         }
     }
     
+    func sonarPing() {
+        send(.SonarPing)
+    }
+    
     
     // MARK: -
+    
+    private func send(type: PayloadType) {
+        send(type) { _ in }
+    }
     
     private func send(type: PayloadType, @noescape configure: inout Payload -> Void) {
         let packet = Packet(type: type, configure: configure)
         serialPeripheral.writeData(packet.serialize)
         
         // DEBUG
-//        let hex = { (data: NSData) -> String in
-//            let bytes = UnsafePointer<UInt8>(data.bytes)
-//            var str   = "["
-//            for i in 0 ..< data.length {
-//                str  += String(format: "0x%02x ", arguments: [bytes[i]])
-//            }
-//            str += "]\n"
-//            return str
-//        }
-//        if  let dat = hex(packet.serialize).dataUsingEncoding(NSUTF8StringEncoding) {
+        let toHex = { (data: NSData) -> String in
+            let bytes = UnsafePointer<UInt8>(data.bytes)
+            var str   = ""
+            for i in 0 ..< data.length {
+                str  += String(format: "0x%02x ", arguments: [bytes[i]])
+            }
+            return str
+        }
+        let hex = toHex(packet.serialize)
+        DDLogVerbose("\(CurrentFileName()): Sent packet [\(hex)]")
+//        if  let dat = "\n\(hex)]\n".dataUsingEncoding(NSUTF8StringEncoding) {
 //            serialPeripheral.writeData(dat)
 //        }
         // END DEBUG

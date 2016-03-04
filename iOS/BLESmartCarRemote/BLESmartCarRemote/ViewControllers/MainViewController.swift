@@ -104,6 +104,10 @@ extension MainViewController {
         speedSetLeftLabel.text  = "\(sl)"
         speedSetRightLabel.text = "\(sr)"
     }
+    
+    @IBAction private func sonarPing_touchUpInside(sender: UIButton) {
+        smartCar?.sonarPing()
+    }
 }
 
 

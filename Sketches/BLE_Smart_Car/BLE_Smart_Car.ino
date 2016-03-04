@@ -65,7 +65,13 @@ void loop() {
 
   // Test serial receive
   if (bleSerial.available()) {
-    Serial.write(bleSerial.read());
+    int8_t count = 0;
+    while (bleSerial.available()) {
+      Serial.write(bleSerial.read());
+      count++;
+    }
+    Serial.print("Bytes - ");
+    Serial.println(count);
   }
   if (Serial.available()) {
     bleSerial.write(Serial.read());

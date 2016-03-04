@@ -13,6 +13,7 @@ import Foundation
 
 extension PayloadType {
     static let SetSpeed     = PayloadTypeSetSpeed
+    static let SonarPing    = PayloadTypeSonarPing
 }
 
 

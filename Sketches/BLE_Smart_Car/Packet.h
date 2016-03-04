@@ -9,7 +9,8 @@
 #include <stdint.h>
 
 typedef enum : uint8_t {
-    PayloadTypeSetSpeed = 0x01,
+    PayloadTypeSetSpeed  = 0x01,
+    PayloadTypeSonarPing = 0x02,
 } PayloadType;
 
 typedef struct {
