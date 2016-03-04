@@ -73,10 +73,16 @@ extension MainViewController {
 extension MainViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var viewController = segue.destinationViewController
+        
+        // Get root view controller if destination is a navigation controller
+        if  let navigationController = viewController as? UINavigationController {
+            viewController = navigationController.viewControllers[0]
+        }
 
         // Attach self as delegate to scan manager
-        if  let viewController = segue.destinationViewController as? ScanViewController {
-            viewController.delegate = self
+        if  let scanViewController = viewController as? ScanViewController {
+            scanViewController.delegate = self
         }
     }
 }
