@@ -18,7 +18,6 @@
 		143AF9E31C7BC8C70043FD28 /* CocoaLumberjackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 143AF9C51C7BC8790043FD28 /* CocoaLumberjackSwift.framework */; };
 		143AF9E41C7BC8C70043FD28 /* CocoaLumberjackSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 143AF9C51C7BC8790043FD28 /* CocoaLumberjackSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		143AF9E81C7BC8D70043FD28 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 143AF9E71C7BC8D70043FD28 /* CoreBluetooth.framework */; };
-		143AF9F01C7BCB320043FD28 /* RemoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143AF9EF1C7BCB320043FD28 /* RemoteController.swift */; };
 		143AF9F31C7BCB3D0043FD28 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143AF9F11C7BCB3D0043FD28 /* MainViewController.swift */; };
 		143AF9F41C7BCB3D0043FD28 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143AF9F21C7BCB3D0043FD28 /* ScanViewController.swift */; };
 		143AFA191C7BCD160043FD28 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 143AF9C31C7BC8790043FD28 /* CocoaLumberjack.framework */; };
@@ -220,7 +219,6 @@
 		143AF9A41C7BC8710043FD28 /* BLESerial.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BLESerial.xcodeproj; path = ../Vendor/BLESerial/BLESerial/BLESerial.xcodeproj; sourceTree = "<group>"; };
 		143AF9AB1C7BC8790043FD28 /* Lumberjack.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Lumberjack.xcodeproj; path = ../Vendor/CocoaLumberjack/Lumberjack.xcodeproj; sourceTree = "<group>"; };
 		143AF9E71C7BC8D70043FD28 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
-		143AF9EF1C7BCB320043FD28 /* RemoteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteController.swift; sourceTree = "<group>"; };
 		143AF9F11C7BCB3D0043FD28 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		143AF9F21C7BCB3D0043FD28 /* ScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		1457BDF91C88F8EF0056A90B /* Packet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Packet.swift; sourceTree = "<group>"; };
@@ -362,7 +360,6 @@
 				149786851C894D4900777822 /* Packet.m */,
 				1457BDF91C88F8EF0056A90B /* Packet.swift */,
 				149786961C89563500777822 /* SmartCar.swift */,
-				143AF9EF1C7BCB320043FD28 /* RemoteController.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -614,7 +611,6 @@
 				143AF98E1C7BC7CF0043FD28 /* AppDelegate.swift in Sources */,
 				1457BDFA1C88F8EF0056A90B /* Packet.swift in Sources */,
 				149786861C894D4900777822 /* Packet.m in Sources */,
-				143AF9F01C7BCB320043FD28 /* RemoteController.swift in Sources */,
 				149786971C89563500777822 /* SmartCar.swift in Sources */,
 				143AF9F41C7BCB3D0043FD28 /* ScanViewController.swift in Sources */,
 			);

@@ -37,12 +37,6 @@ extension AppDelegate: UIApplicationDelegate {
             DDTTYLogger.sharedInstance().setForegroundColor(UIColor.grayColor(), backgroundColor: nil, forFlag: .Verbose)
         }
         
-        // Ensure the remote controller is instantiated so that core bluetooth
-        // is ready to go
-        do {
-//            let _ = RemoteController.sharedController
-        }
-        
         return true
     }
 }
