@@ -47,6 +47,9 @@ void SerialProcessor::loop() {
   // If we have a complete packet, it's time to process it
   if (blePacketBufIndex >= sizeof(Packet)) {
     SerialProcessor::processPacket((Packet *)blePacketBuf);
+
+    // Start over for next packet
+    blePacketBufIndex = 0;
   }
 }
 
@@ -65,6 +68,17 @@ uint8_t SerialProcessor::nextExpectedByte() {
 
 // Interpret the packet & process it
 void SerialProcessor::processPacket(Packet *packet) {
-//  switch (packet.
+  switch (packet->type) {
+    case PayloadTypeSetSpeed:
+      Serial.print("Set speed - ");
+      Serial.print(packet->payload.speed.left);
+      Serial.print(", ");
+      Serial.println(packet->payload.speed.right);
+      break;
+
+    case PayloadTypeSonarPing:
+      Serial.println("Sonar ping");
+      break;
+  }
 }
 
