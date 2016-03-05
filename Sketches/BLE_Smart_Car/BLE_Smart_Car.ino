@@ -5,27 +5,11 @@
 //  Bluetooth controlled smart car
 //
 
-#include <SoftwareSerial.h>
 #include "HBridgeMotorController.h"
 #include "RotaryEncoderController.h"
+#include "SerialProcessor.h"
 #include "Packet.h"
-
-// H-bridge motor controller pins
-#define PIN_MOTOR_PWMA 11
-#define PIN_MOTOR_IN1A  9
-#define PIN_MOTOR_IN2A 10
-#define PIN_MOTOR_PWMB  5
-#define PIN_MOTOR_IN1B  6
-#define PIN_MOTOR_IN2B  7
-#define PIN_MOTOR_STBY  8
-
-// Speed encoder pins
-#define PIN_SPEED_ENCODER_A 2
-#define PIN_SPEED_ENCODER_B 3
-
-// Bluetooth pins
-#define PIN_BLE_TX  A0
-#define PIN_BLE_RX  A1
+#include "Pins.h"
 
 
 // Motor controller
@@ -35,61 +19,27 @@ HBridgeMotorController motorController(
     PIN_MOTOR_STBY);
 
 
-// Bluetoth serial
-SoftwareSerial bleSerial(PIN_BLE_RX, PIN_BLE_TX); // RX, TX
-
 // Setup
 void setup() {
 
-	// Start rotary encoder
-	RotaryEncoderController::begin(PIN_SPEED_ENCODER_A, PIN_SPEED_ENCODER_B);
  
-  // Open serial communications and wait for port to open:
+  // Start serial communications and wait for port to open:
   Serial.begin(9600);
   while (!Serial);
 
   Serial.println("BLE Smart Car");
 
-  // Initialize serial com to bluetoth
-  bleSerial.begin(9600);
+  // Start components
+  {
+    SerialProcessor::begin();
+  }
 }
 
 // Loop
 void loop() {
 
-	// Loop rotary encoder
-	RotaryEncoderController::loop();
-
-	// Test motor controller
-	testMotorControllerLoop();
-
-  // Test serial receive
-  if (bleSerial.available()) {
-    int8_t count = 0;
-    while (bleSerial.available()) {
-      Serial.write(bleSerial.read());
-      count++;
-    }
-    Serial.print("Bytes - ");
-    Serial.println(count);
-  }
-  if (Serial.available()) {
-    bleSerial.write(Serial.read());
+  // Loop all the components
+  {
+    SerialProcessor::loop();
   }
 }
-
-
-/*
- * Test - Motor Controller
- */
-
-void testMotorControllerLoop() {
-
-  // Read potentiometer
-  uint16_t pot = analogRead(5);
-
-  // Change speed
-  int16_t speed = map(pot, 0, 1023, -255, 255);
-  motorController.motor(HBRIDGE_MOTOR_A).setSpeed(speed);
-}
-
