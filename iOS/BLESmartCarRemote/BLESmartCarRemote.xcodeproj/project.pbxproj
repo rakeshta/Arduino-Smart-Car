@@ -23,6 +23,7 @@
 		143AFA191C7BCD160043FD28 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 143AF9C31C7BC8790043FD28 /* CocoaLumberjack.framework */; };
 		143AFA1A1C7BCD160043FD28 /* CocoaLumberjack.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 143AF9C31C7BC8790043FD28 /* CocoaLumberjack.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1457BDFA1C88F8EF0056A90B /* Packet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1457BDF91C88F8EF0056A90B /* Packet.swift */; };
+		146588C31C8BD80D003BF8C0 /* CGVector+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146588C21C8BD80D003BF8C0 /* CGVector+Ext.swift */; };
 		149786971C89563500777822 /* SmartCar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149786961C89563500777822 /* SmartCar.swift */; };
 /* End PBXBuildFile section */
 
@@ -224,6 +225,7 @@
 		1457BDF91C88F8EF0056A90B /* Packet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Packet.swift; sourceTree = "<group>"; };
 		1457BE0D1C8910420056A90B /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Playground.playground; sourceTree = "<group>"; };
 		1457BE121C8914570056A90B /* BLESmartCarRemote-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BLESmartCarRemote-Bridging-Header.h"; sourceTree = "<group>"; };
+		146588C21C8BD80D003BF8C0 /* CGVector+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGVector+Ext.swift"; sourceTree = "<group>"; };
 		149786961C89563500777822 /* SmartCar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartCar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -357,6 +359,7 @@
 				141807FB1C89F9A400CC65B7 /* Packet.h */,
 				1457BDF91C88F8EF0056A90B /* Packet.swift */,
 				149786961C89563500777822 /* SmartCar.swift */,
+				146588C21C8BD80D003BF8C0 /* CGVector+Ext.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -608,6 +611,7 @@
 				143AF98E1C7BC7CF0043FD28 /* AppDelegate.swift in Sources */,
 				1457BDFA1C88F8EF0056A90B /* Packet.swift in Sources */,
 				149786971C89563500777822 /* SmartCar.swift in Sources */,
+				146588C31C8BD80D003BF8C0 /* CGVector+Ext.swift in Sources */,
 				143AF9F41C7BCB3D0043FD28 /* ScanViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

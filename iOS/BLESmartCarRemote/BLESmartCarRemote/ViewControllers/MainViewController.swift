@@ -93,9 +93,11 @@ extension MainViewController {
 extension MainViewController {
     
     @IBAction private func joystickControl_valueChanged(sender: CAJoystickControl) {
-        let m  = sender.value.magnitude
-        let sl = Int16(m * 255)
-        let sr = Int16(m * 255)
+        
+        // Convert joystick vector to speed
+        let su = sender.value.toTankDrive
+        let sl = Int16(su.left  * 255)
+        let sr = Int16(su.right * 255)
         
         // Send command to device
         smartCar?.setSpeed(left: sl, right: sr)
