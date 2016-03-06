@@ -11,14 +11,15 @@
 
 #include "Arduino.h"
 
+
 // H-bridge motor controller pins
 #define PIN_MOTOR_PWMA 11
-#define PIN_MOTOR_IN1A  9
 #define PIN_MOTOR_IN2A 10
-#define PIN_MOTOR_PWMB  5
-#define PIN_MOTOR_IN1B  6
-#define PIN_MOTOR_IN2B  7
+#define PIN_MOTOR_IN1A  9
 #define PIN_MOTOR_STBY  8
+#define PIN_MOTOR_IN1B  7
+#define PIN_MOTOR_IN2B  6
+#define PIN_MOTOR_PWMB  5
 
 // Speed encoder pins
 #define PIN_SPEED_ENCODER_A 2

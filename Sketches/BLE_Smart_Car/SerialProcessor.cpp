@@ -7,6 +7,7 @@
 
 #include <SoftwareSerial.h>
 #include "SerialProcessor.h"
+#include "SmartCar.h"
 #include "Pins.h"
 
 // Bluetoth serial
@@ -70,14 +71,11 @@ uint8_t SerialProcessor::nextExpectedByte() {
 void SerialProcessor::processPacket(Packet *packet) {
   switch (packet->type) {
     case PayloadTypeSetSpeed:
-      Serial.print("Set speed - ");
-      Serial.print(packet->payload.speed.left);
-      Serial.print(", ");
-      Serial.println(packet->payload.speed.right);
+      SmartCar::setSpeed(packet->payload.speed.left, packet->payload.speed.right);
       break;
 
     case PayloadTypeSonarPing:
-      Serial.println("Sonar ping");
+      SmartCar::sonarPing();
       break;
   }
 }

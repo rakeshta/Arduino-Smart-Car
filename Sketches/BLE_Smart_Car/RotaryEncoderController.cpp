@@ -44,7 +44,7 @@ static unsigned long g_time;
 static unsigned long g_delta;
 
 
-// Setups up the encoder
+// Sets up the encoder
 void RotaryEncoder::begin(uint8_t pin, void (*ISR)()) {
 
 	// Initialize state
