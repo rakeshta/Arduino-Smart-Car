@@ -11,9 +11,16 @@ import CocoaLumberjackSwift
 import BLESerial
 
 
+// MARK: - SmartCarDelegate
+
+protocol SmartCarDelegate: AnyObject {
+    func smartCarDidDisconnect(smartCar: SmartCar)
+}
+
+
 // MARK: - SmartCar
 
-internal class SmartCar {
+internal final class SmartCar {
     
     // MARK: - Shared Serial Manager
     
@@ -24,11 +31,14 @@ internal class SmartCar {
     
     let serialPeripheral: BLESerialPeripheral
     
+    weak var delegate:    SmartCarDelegate?
+    
     
     // MARK: - Init
     
     init(serialPeripheral: BLESerialPeripheral) {
         self.serialPeripheral = serialPeripheral
+        self.serialPeripheral.delegate = self
     }
 }
 
@@ -74,5 +84,16 @@ extension SmartCar {
 //            serialPeripheral.writeData(dat)
 //        }
         // END DEBUG
+    }
+}
+
+
+// MARK: - BLE Serial Peripheral Delegate
+
+extension SmartCar: BLESerialPeripheralDelegate {
+    
+    @objc
+    func serialPeripheral(serialPerihperal: BLESerialPeripheral, didDisconnectWithError error: NSError?) {
+        delegate?.smartCarDidDisconnect(self)
     }
 }

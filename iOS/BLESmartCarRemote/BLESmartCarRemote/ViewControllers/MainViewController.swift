@@ -27,6 +27,11 @@ class MainViewController: UIViewController {
     
     private var smartCar: SmartCar? {
         didSet {
+            
+            // Attach delegate
+            smartCar?.delegate = self
+            
+            // Update title
             title = smartCar?.serialPeripheral.name ?? "Not Connected"
         }
     }
@@ -119,5 +124,20 @@ extension MainViewController: ScanViewControllerDelegate {
     
     func scanViewController(viewController: ScanViewController, didConnectToPeripheral peripheral: BLESerialPeripheral) {
         smartCar = SmartCar(serialPeripheral: peripheral)
+    }
+}
+
+
+// MARK: - Smart Car Delegate
+
+extension MainViewController: SmartCarDelegate {
+    
+    func smartCarDidDisconnect(smartCar: SmartCar) {
+        
+        // Clear connected smart car
+        self.smartCar = nil
+        
+        // Scan for smart car again
+        performSegueWithIdentifier("ShowScanViewController", sender: nil)
     }
 }
